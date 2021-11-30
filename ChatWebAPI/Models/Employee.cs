@@ -16,6 +16,9 @@ namespace ChatAppAPI.Models
         public string email { get; set; }
         public string fullname { get; set; }
         public Boolean isActive { get; set; }
-        public int CampanyId { get; set; }
+        public int EmployeeId { get; set; }
+        public string message { get; set; }
+        public string type { get; set; }
+        public int clientId { get; set; }
     }
 }

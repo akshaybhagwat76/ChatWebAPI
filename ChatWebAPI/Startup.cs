@@ -17,6 +17,7 @@ using SignalRChat.Hubs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ChatWebAPI
@@ -49,7 +50,7 @@ namespace ChatWebAPI
             });
             services.AddScoped<IGetUserslist, GetUserListService>();
             var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.AddSignalR();
+       
             services.AddCors(options =>
             {
                 options.AddPolicy(DefaultCorsPolicyName, builder =>
@@ -68,6 +69,7 @@ namespace ChatWebAPI
                         .AllowCredentials();
                 });
             });
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,13 +86,12 @@ namespace ChatWebAPI
             app.UseAuthorization();
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName); //Enable CORS!
-            app.UseCors("AllowOrigin");
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<ChatHub>("/chathub");
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("chatsocket");
+             
             });
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ChatAppAPI.Models;
+using ChatWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace ChatAppAPI.DBHelper
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Chat_OneToOne> ChatOnetoOne { get; set; }
 
     }
 }

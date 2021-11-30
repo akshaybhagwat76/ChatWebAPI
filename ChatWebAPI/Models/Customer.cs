@@ -14,7 +14,10 @@ namespace ChatAppAPI.Models
         public int id { get; set; }
         public string Fullname { get; set; }
         public string Email { get; set; }
-        public int CompanyId { get; set; }
+        public int ClientId { get; set; }
         public string Phone { get; set; }
+        public int EmployeeId { get; set; }
+        public string type { get; set; }
+        public string message { get; set; }
     }
 }
